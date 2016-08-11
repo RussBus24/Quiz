@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>The RussBus Quiz App</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="js/app.js"></script>
-	<title>The RussBus Quiz App</title>
 </head>
 <body>
 <header class="header">
 <h2>The RussBus Quiz App</h2>
 </header>
+	<section id="intro">
+		<section id="intro-content">
+			<p>Welcome to The RussBus Quiz App. Click on the button below to begin.</p>
+			<button id="start-button">Start!</button>
+		</section>
+	</section>
 	<section class="game-main">
 	<div id="header">
 	<h1 id="question-number">Question 1 of 5</h1>
@@ -26,10 +33,10 @@
 			<p>What does the NFL stand for?</p>
 			</div>
 			<div class="game-answers">
-			<p>A) No Fun League</p>
-			<p>B) Nice Funky League</p>
-			<p>C) National Football League</p>
-			<p>D) Northern French League</p>
+			<p>A) <span id="answer1"> </span></p>
+			<p>B) <span id="answer2"> </span></p>
+			<p>C) <span id="answer3"> </span></p>
+			<p>D) <span id="answer4"> </span></p>
 			</div>
 		</div>
 	</div>
