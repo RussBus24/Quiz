@@ -19,6 +19,43 @@ img {
 	max-width: 100%;
 }
 
+#intro {
+	border: 1px solid #000000;
+	margin: 0 auto;
+	position: relative;
+	height: 750px;
+	width: 900px;
+	text-align: center;
+}
+
+#intro-content {
+	border: 1px solid #000000;
+	color: #fff;
+	font-family: 'Asap', sans-serif;
+	font-size: 250%;
+	height: 250px;
+	width: 100%;
+	margin-top: 220px;
+}
+
+#start-button {
+	background: transparent;
+	box-shadow: 3px 3px 5px;
+	border-radius: 6px;
+	color: #fff;
+	cursor: pointer;
+	font-family: 'Asap', sans-serif;
+	font-size: 24px;
+	height: 45px;
+	width: 120px;
+	transition: background 1s, color 1s;
+}
+
+#start-button:hover {
+	color: #000000;
+	background-color: #ffffff;
+}
+
 #header {
 	border: 1px solid #000000;
 	height: 60px;
