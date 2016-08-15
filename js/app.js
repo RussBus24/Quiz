@@ -95,7 +95,7 @@ var questionAnswers = currentQuestion.answers[questionNumber];
 console.log(currentQuestion);
 
 
-function populateQA() {
+function populateQA(questionNumber) {
 	var questionPic = currentQuestion.graphic;
 	var questionAns = currentQuestion.answers;
 	
@@ -158,7 +158,7 @@ function wrongAnswer() {
 
 function nextQuestion() {
 
-
+	populateQA();
 
 	$("#answer-screen").fadeOut(900, function () {
 		$(".game-main").fadeIn(900);
