@@ -2,6 +2,7 @@ $(document).ready(function() {
 	$(".game-main").hide();
 	$("#answer-screen").hide();
 	$("h2").hide();
+	$('#final-score-screen').hide();
 
 	$("#start-button").click(function(){
 		$("#intro").fadeOut(1000, function () {
@@ -24,8 +25,10 @@ $(document).ready(function() {
 	});
 
 	$(".next-button").on('click', function () {
-		$('#hidden-answer').text();
+		$('#hidden-answer').empty();
 		questionNumber++;
+		questionTrack++;
+		currentQuestion = questions[questionNumber]
 		nextQuestion();
 	});
 });
@@ -64,7 +67,7 @@ var questions = [{
 	"Squab refers to an infant pigeon."]
 },
 {
-	graphic: "dodo.jpg",
+	graphic: "dodo-bird.jpg",
 	content: "What year was the last known sighting of the Dodo Bird?",
 	answers: ["A) 1912", "B) 1662", "C) 1517", "D) 1776"],
 	correct: "B) 1662",
@@ -87,6 +90,7 @@ var questions = [{
 }]
 
 var questionNumber = 0;
+var questionTrack = 1;
 var scoreKeeper = 0;
 var currentQuestion = questions[questionNumber];
 var questionAnswers = currentQuestion.answers[questionNumber];
@@ -100,7 +104,12 @@ function populateQA(questionNumber) {
 	var questionAns = currentQuestion.answers;
 	
 	var gameGraphic = $('<img>');
-	gameGraphic.attr('src', currentQuestion.graphic);
+	/*gameGraphic.attr('src', currentQuestion.graphic);*/
+	gameGraphic.attr({
+		src: questionPic,
+		id: "graphic",
+	});
+
 	$('#game-graphics').prepend(gameGraphic);
 
 	$('#game-question').text(currentQuestion.content);
@@ -113,16 +122,10 @@ function populateQA(questionNumber) {
 function checkAnswer() {
 	var correctAnswer = currentQuestion.correct;
 	var userAnswer = $("#hidden-answer").text();
-	var userAnswerArray = currentQuestion.answers.indexOf(userAnswer);
-	var answerArrayDesc = currentQuestion.feedbackAnswer[userAnswerArray];
-
-	console.log(userAnswerArray);
-	console.log(answerArrayDesc);
 
 	if (userAnswer === correctAnswer) {
 		console.log('Correct!');
 		rightAnswer();
-
 	}
 	else {
 		console.log('Incorrect or not working.');
@@ -158,19 +161,50 @@ function wrongAnswer() {
 
 function nextQuestion() {
 
-	populateQA();
+	var questionChoices = currentQuestion.answers;
+	var questionPic = currentQuestion.graphic;
+	var count = questionTrack;
 
-	$("#answer-screen").fadeOut(900, function () {
-		$(".game-main").fadeIn(900);
-	});
+	if (questionNumber < 5) {
 
+		$('.answer-choices').remove();
+		$('#graphic').remove();
+
+		$('span#question-counter').text(count);
+		populateQA();
+
+		$('.answer-choices').on('click', function() {
+		console.log($(this).text());
+
+		userInput = $(this).text();
+
+		$('#hidden-answer').text(userInput);
+
+		checkAnswer();
+
+		});
+
+		$("#answer-screen").fadeOut(900, function () {
+			$(".game-main").fadeIn(900);
+		});
+	}
+
+	else {
+
+	}
 }
 
 function questionTracker() {
-
+	var count = questionTrack;
+	count++;
+	$('span#question-counter').text(count);
 }
 
 function scoreTracker() {
+	var score = scoreKeeper;
+
+	scoreKeeper=+100;
+	$('span#scoreValue').html(scoreKeeper);
 
 }
 
