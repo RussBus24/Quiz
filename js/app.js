@@ -14,14 +14,12 @@ $(document).ready(function() {
 
 	populateQA();
 
-	$('.answer-choices').on('click', function() {
+	$('.game-answers').on('click', '.answer-choices', function() {
 	console.log($(this).text());
 
 	userInput = $(this).text();
 
-	$('#hidden-answer').text(userInput);
-
-	checkAnswer();
+	checkAnswer(userInput);
 	});
 
 	$(".next-button").on('click', function () {
@@ -50,10 +48,10 @@ var questions = [{
 	answers: ["A) 21", "B) 33", "C) 12", "D) 17"],
 	correct: "D) 17",
 	scoreValue: 100,
-	feedbackAnswer: ["Incorrect! Although, the Boston Celtics have won 21 conference titles & 21 division titles. Oh, and they have 21 retired numbers too.",
-	"Incorrect! This would be the jersey number for Larry Bird, one of the Celtics' most recognized players.",
-	"Incorrect! This would actually be how many times the Celtics met the Los Angeles Lakers, their arch rival, in the NBA Finals.",
-	"Correct! The Boston Celtics have won a league leading 17 championships since it's inception in 1946."]
+	feedbackAnswer: ["Although, the Boston Celtics have won 21 conference titles & 21 division titles. Oh, and they have 21 retired numbers too.",
+	"This would be the jersey number for Larry Bird, one of the Celtics' most recognized players.",
+	"This would actually be how many times the Celtics met the Los Angeles Lakers, their arch rival, in the NBA Finals.",
+	"The Boston Celtics have won a league leading 17 championships since it's inception in 1946."]
 },
 {
 	graphic: "kangaroo.jpg",
@@ -119,9 +117,8 @@ function populateQA(questionNumber) {
 	};
 }
 
-function checkAnswer() {
+function checkAnswer(userNumber) {
 	var correctAnswer = currentQuestion.correct;
-	var userAnswer = $("#hidden-answer").text();
 
 	if (userAnswer === correctAnswer) {
 		console.log('Correct!');
@@ -133,8 +130,7 @@ function checkAnswer() {
 	};
 }
 
-function rightAnswer() {
-	var userAnswer = $("#hidden-answer").text(); 
+function rightAnswer(userNumber) {
 	var userAnswerArray = currentQuestion.answers.indexOf(userAnswer);
 	var AnswerDesc = currentQuestion.feedbackAnswer[userAnswerArray];
 
@@ -146,8 +142,7 @@ function rightAnswer() {
 	$("#answer-content").find("h3").text(AnswerDesc);
 }
 
-function wrongAnswer() {
-	var userAnswer = $("#hidden-answer").text(); 
+function wrongAnswer(userNumber) {
 	var userAnswerArray = currentQuestion.answers.indexOf(userAnswer);
 	var AnswerDesc = currentQuestion.feedbackAnswer[userAnswerArray];
 
@@ -178,9 +173,7 @@ function nextQuestion() {
 
 		userInput = $(this).text();
 
-		$('#hidden-answer').text(userInput);
-
-		checkAnswer();
+		checkAnswer(userNumber);
 
 		});
 
