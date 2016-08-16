@@ -7,6 +7,7 @@ h1 {
 	font-size: 500%;
 }
 
+
 #final-score-screen > h1 {
 	font-size: 400%;
 	margin-top: 120px;
@@ -147,7 +148,9 @@ img {
 	width: 450px;
 }
 
+
 .game-main, #answer-screen, #final-score-screen {
+
 	background-color: #fff;
 	border: 1px solid #000000;
 	position: relative;

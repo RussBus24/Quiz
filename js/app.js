@@ -15,11 +15,13 @@ $(document).ready(function() {
 	populateQA();
 
 	$('.game-answers').on('click', '.answer-choices', function() {
+
 	console.log($(this).text());
 
 	userInput = $(this).text();
 
 	checkAnswer(userInput);
+
 	});
 
 	$(".next-button").on('click', function () {
