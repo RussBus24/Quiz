@@ -71,7 +71,7 @@ var questions = [{
 	"The Boston Celtics have won a league leading 17 championships since it's inception in 1946."]
 },
 {
-	graphic: "kangaroo.jpg",
+	graphic: "Kangaroo.jpg",
 	content: "What do you call a newborn kangaroo?",
 	answers: ["A) Joey", " B) Youngin", " C) Cub", "D) Squab"],
 	correct: "A) Joey",
