@@ -10,7 +10,7 @@ h1 {
 
 #final-score-screen > h1 {
 	font-size: 400%;
-	margin-top: 120px;
+	margin-top: 160px;
 	margin-bottom: 33px;
 	text-align: center;
 }
@@ -30,12 +30,11 @@ h1 {
 	color: #fff;
 	text-align: center;
 	margin-top: 200px;
-	margin-bottom: 33px;
+	margin-bottom: 25px;
 }
 
-#answer-content > h3 {
-	border: 1px solid #000000;
-	height: 50px;
+#answer-content, #final-score-content > h3 {
+	height: 60px;
 	width: 100%;
 	text-align: center;
 }
@@ -45,8 +44,15 @@ h2 {
 	text-align: center;
 }
 
+h3 {
+	margin: 0;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
 #final-score-screen > h2 {
-	color: #000;
+	background-color: blue;
+	color: #fff;
 	font-size: 300%;
 }
 
@@ -93,7 +99,7 @@ img {
 	background-color: #ffffff;
 }
 
-.next-button {
+.next-button, .start-over-button {
 	background: transparent;
 	box-shadow: 3px 3px 5px;
 	border-radius: 6px;
@@ -102,13 +108,18 @@ img {
 	font-family: 'Asap', sans-serif;
 	font-size: 24px;
 	height: 45px;
-	width: 120px;
+	width: 140px;
 	transition: background 1s, color 1s;
 }
 
 .next-button:hover {
 	color: #fff;
 	background-color: #0000ff;
+}
+
+.start-over-button:hover {
+	color: #fff;
+	background-color: #ffa500;
 }
 
 .header {
@@ -118,7 +129,9 @@ img {
 }
 
 #header {
-	height: 60px;
+	background-color: blue;
+	color: #fff;
+	height: 70px;
 	width: 100%;
 	text-align: center;
 }
@@ -137,24 +150,21 @@ img {
 .game-section-left {
 	border: 1px solid #000000;
 	float: left;
-	height: 500px;
+	height: 450px;
 	width: 350px;
 }
 
 .game-section-right {
-	border: 1px solid #000000;
 	float: right;
-	height: 500px;
+	height: 450px;
 	width: 450px;
 }
 
-
 .game-main, #answer-screen, #final-score-screen {
-
 	background-color: #fff;
 	border: 1px solid #000000;
 	position: relative;
-	height: 750px;
+	height: 592px;
 	width: 900px;
 	margin: 0 auto;
 }
@@ -165,7 +175,7 @@ img {
 	margin: 0 auto;
 	height: 300px;
 	width: 349px;
-	margin-top: 100px;
+	margin-top: 80px;
 }
 
 .game-content {
@@ -173,7 +183,6 @@ img {
 }
 
 #game-questions {
-	border: 1px solid #000000;
 	font-family: 'Asap', sans-serif;
 	font-size: 150%;
 	position: relative;
@@ -201,12 +210,11 @@ img {
 	font-family: 'Asap', sans-serif;
 	font-size: 100%;
 	position: relative;
-	height: 300px;
+	height: 200px;
 	width: 100%;
 }
 
 .game-answers > button:first-child {
-	margin-top: 50px;
 	margin-bottom: 0px;
 }
 
@@ -222,10 +230,11 @@ img {
 }
 
 .score-content {
-	border: 1px solid #000000;
+	background-color: blue;
+	color: #fff;
 	clear: both;
 	font-family: 'Asap', sans-serif;
-	height: 75px;
+	height: 70px;
 	width: 100%;
 }
 
@@ -233,6 +242,11 @@ img {
 	font-weight: bold;
 	font-size: 24px;
 	text-align: center;
+}
+
+#score-tracker > p {
+	margin: 0;
+	padding-top: 17px;
 }
 
 #scoreValue {
@@ -243,7 +257,7 @@ img {
 	text-align: center;
 }
 
-#next-question {
+#next-question, #start-over {
 	text-align: center;
 	width: 100%
 }
