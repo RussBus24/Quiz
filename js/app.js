@@ -18,9 +18,9 @@ $(document).ready(function() {
 
 	console.log($(this).text());
 
-	userInput = $(this).text();
+	userAnswer = $(this).text();
 
-	checkAnswer(userInput);
+	checkAnswer(userAnswer);
 
 	});
 
@@ -30,6 +30,21 @@ $(document).ready(function() {
 		questionTrack++;
 		currentQuestion = questions[questionNumber]
 		nextQuestion();
+	});
+
+	$(".start-over-button").click(function() {
+		questionNumber = 0;
+		questionTrack = 1;
+		scoreKeeper = 0;
+		currentQuestion = questions[questionNumber]
+		$('.answer-choices').remove();
+		$('#graphic').remove();
+		$('span#question-counter').text(questionTrack);
+		$('span#scoreValue').text(scoreKeeper);
+		populateQA();
+		$("#final-score-screen").fadeOut(1000, function() {
+			$(".game-main").fadeIn(1000);
+		});
 	});
 });
 
@@ -86,7 +101,7 @@ var questions = [{
 	feedbackAnswer: ["There are approximately 30-35 different species of Mongoose in the world.",
 	"Mongoose have a special neurotransmitter which renders them immune to snake venom. However, snake is not a regular part of their diet.",
 	"Mongoose are very nimble animals, fast enough to avoid strikes from a snake.",
-	"Some species on mongoose eat fruits, nuts and seeds as part of their diet."]
+	"Some species of mongoose eat fruits, nuts and seeds as part of their diet."]
 }]
 
 var questionNumber = 0;
@@ -119,22 +134,23 @@ function populateQA(questionNumber) {
 	};
 }
 
-function checkAnswer(userNumber) {
+function checkAnswer(userAnswer) {
 	var correctAnswer = currentQuestion.correct;
 
 	if (userAnswer === correctAnswer) {
 		console.log('Correct!');
-		rightAnswer();
+		rightAnswer(userAnswer);
 	}
 	else {
 		console.log('Incorrect or not working.');
-		wrongAnswer();
+		wrongAnswer(userAnswer);
 	};
 }
 
-function rightAnswer(userNumber) {
+function rightAnswer(userAnswer) {
 	var userAnswerArray = currentQuestion.answers.indexOf(userAnswer);
 	var AnswerDesc = currentQuestion.feedbackAnswer[userAnswerArray];
+	
 
 	$(".game-main").fadeOut(900, function() {
 		$("#answer-screen").fadeIn(900);
@@ -142,9 +158,13 @@ function rightAnswer(userNumber) {
 
 	$("#answer-screen").find("h1").attr("id", "right-answer").text("Correct!");
 	$("#answer-content").find("h3").text(AnswerDesc);
+
+	scoreKeeper += currentQuestion.scoreValue;
+	$('span#scoreValue').text(scoreKeeper);
+
 }
 
-function wrongAnswer(userNumber) {
+function wrongAnswer(userAnswer) {
 	var userAnswerArray = currentQuestion.answers.indexOf(userAnswer);
 	var AnswerDesc = currentQuestion.feedbackAnswer[userAnswerArray];
 
@@ -157,9 +177,6 @@ function wrongAnswer(userNumber) {
 }
 
 function nextQuestion() {
-
-	var questionChoices = currentQuestion.answers;
-	var questionPic = currentQuestion.graphic;
 	var count = questionTrack;
 
 	if (questionNumber < 5) {
@@ -170,15 +187,6 @@ function nextQuestion() {
 		$('span#question-counter').text(count);
 		populateQA();
 
-		$('.answer-choices').on('click', function() {
-		console.log($(this).text());
-
-		userInput = $(this).text();
-
-		checkAnswer(userNumber);
-
-		});
-
 		$("#answer-screen").fadeOut(900, function () {
 			$(".game-main").fadeIn(900);
 		});
@@ -186,6 +194,12 @@ function nextQuestion() {
 
 	else {
 
+		/*$("span#totalScore").text(scoreKeeper);*/
+		finalScore();
+
+		$("#answer-screen").fadeOut(900, function () {
+			$("#final-score-screen").fadeIn(900);
+		})
 	}
 }
 
@@ -195,11 +209,17 @@ function questionTracker() {
 	$('span#question-counter').text(count);
 }
 
-function scoreTracker() {
-	var score = scoreKeeper;
 
-	scoreKeeper=+100;
-	$('span#scoreValue').html(scoreKeeper);
+function finalScore() {
+	$("span#totalScore").text(scoreKeeper);
 
+	if (scoreKeeper === 100) {
+		$("#final-score-content").find("h3").text("You may want to brush up on your trivia skills...");
+	}
+	else if (scoreKeeper >= 200 && scoreKeeper <= 400) {
+		$("#final-score-content").find("h3").text("Not too bad. Better luck next time!");
+	}
+	else if (scoreKeeper >= 500) {
+		$("#final-score-content").find("h3").text("You are a trivia master!");
+	}
 }
-
