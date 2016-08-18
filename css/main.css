@@ -148,7 +148,6 @@ img {
 }
 
 .game-section-left {
-	border: 1px solid #000000;
 	float: left;
 	height: 450px;
 	width: 350px;
@@ -170,7 +169,6 @@ img {
 }
 
 #game-graphics {
-	border: 1px solid #000000;
 	position: relative;
 	margin: 0 auto;
 	height: 300px;
@@ -206,7 +204,6 @@ img {
 }
 
 .game-answers {
-	border: 1px solid #000000;
 	font-family: 'Asap', sans-serif;
 	font-size: 100%;
 	position: relative;
