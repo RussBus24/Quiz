@@ -153,14 +153,14 @@ function rightAnswer(userAnswer) {
 	
 
 	$(".game-main").fadeOut(900, function() {
-		$("#answer-screen").fadeIn(900);
+		$("#answer-screen").fadeIn(900, function() {
+		scoreKeeper += currentQuestion.scoreValue;
+		$('span#scoreValue').text(scoreKeeper);
+		});
 	});
 
 	$("#answer-screen").find("h1").attr("id", "right-answer").text("Correct!");
 	$("#answer-content").find("h3").text(AnswerDesc);
-
-	scoreKeeper += currentQuestion.scoreValue;
-	$('span#scoreValue').text(scoreKeeper);
 
 }
 
